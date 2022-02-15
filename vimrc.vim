@@ -10,6 +10,7 @@ Plug 'edkolev/promptline.vim'                                       " 生成 bas
 Plug 'Yggdroot/indentLine'                                          " 缩进可视化
 Plug 'easymotion/vim-easymotion'                                    " 快速跳转
 Plug 'tpope/vim-commentary'                                         " 代码注释插件
+Plug 'ianva/vim-youdao-translater'                                  " 有道词典翻译
 
 Plug 'roxma/nvim-yarp'                                              " for ncm2
 Plug 'ncm2/ncm2'                                                    " 自动补全
@@ -95,6 +96,11 @@ map <C-k> <leader>k
 " map <C-j> <leader>K
 nmap <C-j> <Plug>(easymotion-s2)
 vmap / gc
+
+" 有道词典翻译
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+noremap <leader>ff :<C-u>Yde<CR>
 
 " airline
 let g:airline#extensions#tabline#enabled = 1 

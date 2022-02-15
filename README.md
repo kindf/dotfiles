@@ -29,6 +29,9 @@
     * ctrl + n：文件函数搜索
     * ctrl + m：打开最近访问文件列表
     * 选中单词 + , + g：全局搜索
+  * 有道词典翻译插件vim-youdao-translater
+    * , + ff：翻译
+    * 选中单词 + ctrl + t：翻译选中单词
   * 状态栏插件vim-airline
   * 启动界面插件vim-startify
   * 缩进可视化插件indentLine
