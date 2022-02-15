@@ -32,6 +32,10 @@
   * 有道词典翻译插件vim-youdao-translater
     * , + ff：翻译
     * 选中单词 + ctrl + t：翻译选中单词
+  * 命令行主题插件promptline.vim
+    * 执行命令":PromptlineSnapshot! ~/.local/etc/shell_prompt.sh"生成配置文件shell_prompt.sh
+  * tmux状态栏插件tmuxline.vim
+    * 执行命令":TmuxlineSnapshot! ~/.local/etc/tmuxline.conf"生成配置文件tmuxline.conf
   * 状态栏插件vim-airline
   * 启动界面插件vim-startify
   * 缩进可视化插件indentLine
