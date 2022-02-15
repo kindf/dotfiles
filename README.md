@@ -1,10 +1,6 @@
 # 安装neovim
 
-* 安装依赖：sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch gettext curl
-
-* git clone https://github.com/neovim/neovim
-* cd neovim && sudo make
-* sudo make install
+* 安装：sudo yum -y install neovim
 * 支持python3：sudo pip3 install --upgrade pynvim
 
 # vim插件
@@ -13,17 +9,9 @@
 
 * 安装：curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-## 主题插件nerodark.vim
-
 ## 目录树插件nerdtree
 
 * , + t：打开目录树
-
-## 状态栏插件vim-airline
-
-## 启动界面插件vim-startify
-
-## 缩进可视化插件indentLine
 
 ## 代码注释插件vim-commentary
 
@@ -33,10 +21,10 @@
 
 * ss + 跳转地方的两个字符：快速跳转
 
-## 代码高亮插件vim-interestingwords
+> ## 代码高亮插件vim-interestingwords
 
-* ctrl + k：高亮单词
-* ctrl + j：取消全部高亮
+> * ctrl + k：高亮单词
+> * ctrl + j：取消全部高亮
 
 ## 文件搜索，模糊搜索插件leaderF
 
@@ -50,10 +38,24 @@
 * ctrl + m：打开最近访问文件列表
 * 选中单词 + , + g：全局搜索
 
+## 状态栏插件vim-airline
+
+## 启动界面插件vim-startify
+
+## 缩进可视化插件indentLine
+
 ## tmux状态栏插件tmuxline.vim
 
 ## 代码补全插件ncm2
 
-# 终端复用tmux
+## 主题插件nerodark.vim
+
+# 终端复用tmux(配置文件.tmux.conf)
 
 * 安装：sudo yum -y install tmux
+* 快捷键
+  * ctrl + e + i：竖分屏
+  * ctrl + e + o：横分屏
+  * crtl + e + n：向前切换窗口
+  * crtl + e + m：向后切换窗口
+  * crtl + e + z：当前窗口最大化

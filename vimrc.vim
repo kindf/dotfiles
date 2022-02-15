@@ -10,6 +10,7 @@ Plug 'edkolev/promptline.vim'                                       " 生成 bas
 Plug 'Yggdroot/indentLine'                                          " 缩进可视化
 Plug 'easymotion/vim-easymotion'                                    " 快速跳转
 Plug 'tpope/vim-commentary'                                         " 代码注释插件
+
 Plug 'roxma/nvim-yarp'                                              " for ncm2
 Plug 'ncm2/ncm2'                                                    " 自动补全
 Plug 'ncm2/ncm2-path'                                               " ncm2路径补全
