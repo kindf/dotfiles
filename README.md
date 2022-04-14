@@ -41,3 +41,6 @@
   * 缩进可视化插件indentLine
   * 代码补全插件ncm2
   * 主题插件nerodark.vim
+
+# 效果图
+[![LldCgP.png](https://s1.ax1x.com/2022/04/14/LldCgP.png)](https://imgtu.com/i/LldCgP)
