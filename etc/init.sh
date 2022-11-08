@@ -14,22 +14,22 @@ case "$-" in
     *) return
 esac
 
-# 将个人 ~/.local/bin 目录加入 PATH
-_ADD_PATH=`echo -e "$PATH" | grep "$HOME/\.local/bin"` 
-if [ -d "$HOME/.local/bin" ] && [ -z $_ADD_PATH ]; then
-    export PATH="$HOME/.local/bin:$PATH"
+# 将个人 ~/.dotfiles/bin 目录加入 PATH
+_ADD_PATH=`echo -e "$PATH" | grep "$HOME/\.dotfiles/bin"` 
+if [ -d "$HOME/.dotfiles/bin" ] && [ -z $_ADD_PATH ]; then
+    export PATH="$HOME/.dotfiles/bin:$PATH"
 fi
 
-# 判断 ~/.local/etc/config.sh 存在的话，就 source 它一下
-if [ -f "$HOME/.local/etc/config.sh" ]; then
-    . "$HOME/.local/etc/config.sh"
+# 判断 ~/.dotfiles/etc/config.sh 存在的话，就 source 它一下
+if [ -f "$HOME/.dotfiles/etc/config.sh" ]; then
+    . "$HOME/.dotfiles/etc/config.sh"
 fi
 
-# 如果是登陆模式，那么 source 一下 ~/.local/etc/login.sh
+# 如果是登陆模式，那么 source 一下 ~/.dotfiles/etc/login.sh
 if [ -n "$BASH_VERSION" ]; then
     if shopt -q login_shell; then
-        if [ -f "$HOME/.local/etc/login.sh" ] && [ -z "$_INIT_SH_NOLOG" ]; then
-            . "$HOME/.local/etc/login.sh"
+        if [ -f "$HOME/.dotfiles/etc/login.sh" ] && [ -z "$_INIT_SH_NOLOG" ]; then
+            . "$HOME/.dotfiles/etc/login.sh"
         fi
     fi
 fi
