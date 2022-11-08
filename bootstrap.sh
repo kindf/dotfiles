@@ -29,7 +29,7 @@ fi
 
 # 安装neovim
 if [ ! $(command -v nvim) ]; then
-    echo "\033[32m start install neovim\n \033[0m"
+    echo -e "\033[32m start install neovim\n \033[0m"
     sudo yum -y install neovim
     # sudo pip3 install --upgrade pynvim
 fi
@@ -40,10 +40,15 @@ touch ~/.vimrc
 sed -i "\:$ETC/vimrc.vim:d" ~/.vimrc
 echo "source $ETC/vimrc.vim" >> ~/.vimrc
 
+# nvim配置
+NVIM_CONFIG_PATH=~/.config/nvim
+mkdir -p $NVIM_CONFIG_PATH
+cp $ETC/init.vim $NVIM_CONFIG_PATH/init.vim
+
 
 # 安装tmux
 if [ ! $(command -v tmux) ]; then
-    echo "\033[32m start install tmux\n \033[0m"
+    echo -e "\033[32m start install tmux\n \033[0m"
     sudo yum -y install tmux
 fi
 
@@ -55,7 +60,7 @@ echo "source $ETC/tmux.conf" >> ~/.tmux.conf
 
 # 安装rg
 if [ ! $(command -v rg) ]; then
-    echo "\033[32m start install ripgrep\n \033[0m"
+    echo -e "\033[32m start install ripgrep\n \033[0m"
     sudo yum -y install yum-utils
     sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
     sudo yum -y install ripgrep
