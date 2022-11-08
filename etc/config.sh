@@ -1,7 +1,7 @@
 # shell prompt
-# from vim ":PromptlineSnapshot ~/.local/etc/shell_prompt.sh airline"
-if [ -f "$HOME/.local/etc/shell_prompt.sh" ]; then
-    . $HOME/.local/etc/shell_prompt.sh
+# from vim ":PromptlineSnapshot ~/.dotfiles/bin/shell_prompt.sh airline"
+if [ -f "$HOME/.dotfiles/bin/shell_prompt.sh" ]; then
+    source $HOME/.dotfiles/bin/shell_prompt.sh
 fi
 
 # enable bash completion

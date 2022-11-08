@@ -108,7 +108,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tmuxline#enabled = 1
 
 "promptline{
-":PromptlineSnapshot! ~/.local/etc/shell_prompt.sh airline
+":PromptlineSnapshot! ~/.dotfiles/bin/shell_prompt.sh airline
 let g:promptline_symbols = {
     \ 'left'          : g:left_sep,
     \ 'left_alt'      : g:left_alt_sep,
@@ -127,8 +127,8 @@ let g:promptline_theme = 'airline'
 "}
 
 
-"tmuxline{                                                                                                                        291 ":Tmuxline airline
-":TmuxlineSnapshot! ~/.local/etc/tmuxline.conf
+"tmuxline{
+":TmuxlineSnapshot! ~/.dotfiles/etc/tmuxline.conf
 let g:tmuxline_separators = {
     \ 'left'     : g:left_sep,
     \ 'left_alt' : g:left_alt_sep,
