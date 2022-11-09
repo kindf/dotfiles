@@ -1,23 +1,21 @@
-# 安装
-* neovim
-  * 安装：sudo yum -y install neovim
-  * 支持python3：sudo pip3 install --upgrade pynvim
-* 插件管理Plug
-  * 安装：curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-* rg
-  * 安装yum的扩展包：yum install yum-utils -y
-  * 设置yum源：sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-  * 安装：sudo yum install ripgrep
-* 终端复用tmux(配置文件.tmux.conf)
-  * 安装：sudo yum -y install tmux
-  * 快捷键
-    * ctrl + e + i：竖分屏
-    * ctrl + e + o：横分屏
-    * crtl + e + n：向前切换窗口
-    * crtl + e + m：向后切换窗口
-    * crtl + e + z：当前窗口最大化
+# 环境
+  * OS: Centos8.0 bit64
+  * neovim: NVIM V0.8.0
+  * tmux: tmux 2.7
 
-# vim插件
+# 快速安装
+  * curl https://raw.githubusercontent.com/kindf/dotfiles/main/bootstrap.sh | bash
+
+# tmux快捷键
+  * ctrl + e + i：竖分屏
+  * ctrl + e + o：横分屏
+  * crtl + e + n：向前切换窗口
+  * crtl + e + m：向后切换窗口
+  * crtl + e + z：当前窗口最大化
+  * crtl + e + h：向左切换窗口
+  * crtl + e + l：向右切换窗口
+
+# vim插件及快捷键
   * 目录树插件nerdtree
     * , + t：打开目录树
   * 代码注释插件vim-commentary
@@ -33,9 +31,7 @@
     * , + ff：翻译
     * 选中单词 + ctrl + t：翻译选中单词
   * 命令行主题插件promptline.vim
-    * 执行命令":PromptlineSnapshot! ~/.local/etc/shell_prompt.sh"生成配置文件shell_prompt.sh
   * tmux状态栏插件tmuxline.vim
-    * 执行命令":TmuxlineSnapshot! ~/.local/etc/tmuxline.conf"生成配置文件tmuxline.conf
   * 状态栏插件vim-airline
   * 启动界面插件vim-startify
   * 缩进可视化插件indentLine
