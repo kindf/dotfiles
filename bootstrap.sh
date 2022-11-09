@@ -33,7 +33,9 @@ if [ ! $(command -v nvim) ]; then
     sudo yum -y install neovim
     # sudo pip3 install --upgrade pynvim
 fi
-\vim +PlugInstall +qall
+# \vim +PlugInstall +qall
+nvim --headless +PlugInstall +qall
+# echo -e "\033[32m install nvim end \n \033[0m"
 
 # 引入vimrc.vim
 touch ~/.vimrc
