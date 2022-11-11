@@ -100,10 +100,10 @@ vmap / gc
 " 有道词典翻译
 vnoremap <silent> <C-T> :<C-u>Ydv<CR>
 nnoremap <silent> <C-T> :<C-u>Ydc<CR>
-noremap <leader>ff :<C-u>Yde<CR>
+noremap <leader>r :<C-u>Yde<CR>
 
 " airline
-let g:airline#extensions#tabline#enabled = 1 
+" let g:airline#extensions#tabline#enabled = 1 
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tmuxline#enabled = 1
 
@@ -160,7 +160,8 @@ endfor
 noremap <c-m> :LeaderfMru<cr>
 noremap <c-n> :LeaderfFunction<cr>
 let g:Lf_ShortcutF = '<c-p>'
-noremap <leader>g :<C-U><C-R>=printf("Leaderf! rg -F -t c -t py -t lua -t go --nowrap --stayOpen -e %s ", leaderf#Rg#visual())<cr><cr>
+noremap <leader>g :<C-U><C-R>=printf("Leaderf! rg -F -t c -t py -t lua -t go -t cpp --nowrap -e %s ", leaderf#Rg#visual())<cr><cr>
+nnoremap <silent> <leader>f :Leaderf rg -t lua -t c -t cpp -t py<CR>
 
 
 "NCM2
