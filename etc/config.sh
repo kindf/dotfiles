@@ -40,7 +40,7 @@ set_tmux_pwd
 alias cd=my_cd
 
 
-alias l='ls -CF'
+alias l='ls -ClF'
 alias la='ls -A'
 alias ll='ls -alF'
 alias ls='ls --color=auto'

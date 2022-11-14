@@ -51,7 +51,8 @@ cp $ETC/init.vim $NVIM_CONFIG_PATH/init.vim
 # 安装tmux
 if [ ! $(command -v tmux) ]; then
     echo -e "\033[32m start install tmux\n \033[0m"
-    sudo yum -y install tmux
+    # sudo yum -y install tmux
+    sh ./bin/tmux_install.sh
 fi
 
 # 引入tmux.conf
