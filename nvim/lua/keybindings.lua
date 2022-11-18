@@ -33,6 +33,7 @@ map("n", "<A-l>", "<C-w>l", opt)
 -- -- 等比例
 -- map("n", "s=", "<C-w>=", opt)
 
+map("n", "vv", "V", opt)
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
@@ -41,14 +42,14 @@ map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
 -- 上下滚动浏览
--- map("n", "<C-j>", "4j", opt)
--- map("n", "<C-k>", "4k", opt)
+map("n", "<C-j>", "5j", opt)
+map("n", "<C-k>", "5k", opt)
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
 
 -- 退出
--- map("n", "<C-w>", ":q<CR>", opt)
+map("n", "<C-w>", ":q<CR>", opt)
 map("n", "<C-s>", ":w<CR>", opt)
 map("n", "<C-q>", ":qa!<CR>", opt)
 map("n", "<C-c><C-c", "", opt)
@@ -57,13 +58,11 @@ map("n", "<Space>", "viw", opt)
 -- nvim-tree
 map("n", "<leader>t", ":NvimTreeToggle<CR>", opt)
 
--- bufferline
-map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
--- map("n", "<C-w>", ":BufferLinePickClose<CR>", opt)
-map("n", "<S-h>", ":BufferLineMovePrev<CR>", opt)
-map("n", "<S-l>", ":BufferLineMoveNext<CR>", opt)
+-- winbar操作
+map("n", "<C-h>", "gT<CR>", opt)
+map("n", "<C-l>", "gt<CR>", opt)
+map("n", "<S-h>", ":-tabmove<CR>", opt)
+map("n", "<S-l>", ":+tabmove<CR>", opt)
 
 -- leaderf
 map("v", "<leader>g",
@@ -73,14 +72,18 @@ map("n", "<leader>f", ":Leaderf rg -t lua -t c -t cpp -t py<CR>", opt)
 map("n", "<C-n>", ":LeaderfFunction <cr>", opt)
 vim.g.Lf_ShortcutF = '<C-p>'
 
--- 插件快捷键
+-- vim-easymotion
+-- 忽略大小写
+map("n", "sj", "<Plug>(easymotion-s2)", opt)
+map("n", "sJ", "<Plug>(easymotion-t2)", opt)
+
 local pluginKeys = {}
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
     -- rename
     mapbuf("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-    -- code action
+    -- code action:
     mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
     -- go xx
     mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)

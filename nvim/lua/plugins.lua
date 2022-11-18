@@ -7,8 +7,6 @@ packer.startup(
         use 'KeitaNakamura/neodark.vim'
         -- 目录树插件
         use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
-        -- 页签bar插件
-        use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" } })
         -- 底部信息插件
         use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
         use("arkav/lualine-lsp-progress")
@@ -33,6 +31,9 @@ packer.startup(
 
         -- 常见编程语言代码段
         use("rafamadriz/friendly-snippets")
+
+        -- 快速跳转
+        use "easymotion/vim-easymotion"
     end)
 
 -- 每次保存 plugins.lua 自动安装插件
