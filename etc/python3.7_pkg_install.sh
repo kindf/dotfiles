@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
-# pkg安装neovim(~/.dotfiles/pkg)
-
+# pkg安装python3.7(~/.dotfiles/pkg)
 set -e
 set -x
 
@@ -14,8 +13,8 @@ VERSION=3.7.4
 PKG_NAME=Python-${VERSION}.tgz
 if [ ! -f ${PKG_NAME} ]; then
     wget -O ${PKG_NAME} https://www.python.org/ftp/python/${VERSION}/${PKG_NAME}
+    tar -zxvf ${PKG_NAME}
 fi
-tar -zxvf ${PKG_NAME}
 
 INSTALL_PATN=${PKG_PATH}/Python-${VERSION}/
 cd ${INSTALL_PATN}
