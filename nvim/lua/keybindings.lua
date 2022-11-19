@@ -68,7 +68,7 @@ map("n", "<S-l>", ":+tabmove<CR>", opt)
 map("v", "<leader>g",
     ":<C-U><C-R>=printf('Leaderf! rg -F -t c -t py -t lua -t go --nowrap --stayOpen -e %s ', leaderf#Rg#visual())<CR><CR>"
     , opt)
-map("n", "<leader>f", ":Leaderf rg -t lua -t c -t cpp -t py<CR>", opt)
+map("n", "<leader>f", ":Leaderf rg -i -t lua -t c -t cpp -t py -t sh<CR>", opt)
 map("n", "<C-n>", ":LeaderfFunction <cr>", opt)
 vim.g.Lf_ShortcutF = '<C-p>'
 
