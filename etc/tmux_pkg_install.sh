@@ -1,15 +1,15 @@
 #!/usr/bin/bash
 
 # 构建所需包
-build_libs=(libevent-devel ncurses-devel gcc make bison pkg-config)
+BUILD_LIBS=(libevent-devel ncurses-devel gcc make bison pkg-config)
 
 # 运行所需包
-run_libs=(libevent ncurses)
+RUN_LIBS=(libevent ncurses)
 
 install_libs=()
 
 # 检查构建所需包
-for lib in ${build_libs[@]}
+for lib in ${BUILD_LIBS[@]}
 do
     if ! rpm -q $lib &>/dev/null; then
         install_libs+=($lib)
@@ -17,7 +17,7 @@ do
 done
 
 # 检查安装所需包
-for lib in ${run_libs[@]}
+for lib in ${RUN_LIBS[@]}
 do
     if ! rpm -q $lib &>/dev/null; then
         install_libs+=($lib)
@@ -34,15 +34,15 @@ fi
 mkdir -p pkg
 cd pkg
 
-version=2.7
-pkg_name=tmux-${version}.tar.gz
+VERSION=2.7
+PKG_NAME=tmux-${VERSION}.tar.gz
 
-if [ ! -f ${pkg_name} ]; then
-    wget -O ${pkg_name} https://github.com/tmux/tmux/releases/download/${version}/${pkg_name}
-    tar -zxf ${pkg_name}
+if [ ! -f ${PKG_NAME} ]; then
+    wget -O ${PKG_NAME} https://github.com/tmux/tmux/releases/download/${VERSION}/${PKG_NAME}
+    tar -zxf ${PKG_NAME}
 fi
 
-cd tmux-${version}/
+cd tmux-${VERSION}/
 ./configure
 make && sudo make install
 
