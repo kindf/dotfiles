@@ -15,6 +15,8 @@ packer.startup(
         -- lsp插件
         use("williamboman/nvim-lsp-installer")
         use({ "neovim/nvim-lspconfig" })
+        -- lsp增强
+        use "tami5/lspsaga.nvim"
         -- 启动界面插件
         use 'mhinz/vim-startify'
 
@@ -34,9 +36,10 @@ packer.startup(
 
         -- 快速跳转
         use "easymotion/vim-easymotion"
-
         -- 快速注释
         use "tpope/vim-commentary"
+        -- 翻译
+        use "ianva/vim-youdao-translater"
     end)
 
 -- 每次保存 plugins.lua 自动安装插件
