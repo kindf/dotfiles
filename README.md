@@ -15,7 +15,7 @@
   * crtl + e + h：向左切换窗口
   * crtl + e + l：向右切换窗口
 
-# vim插件及快捷键
+# 插件及快捷键
   * 目录树插件nerdtree
     * , + t：打开目录树
   * 代码注释插件vim-commentary
@@ -32,10 +32,7 @@
     * 选中单词 + ctrl + t：翻译选中单词
   * 命令行主题插件promptline.vim
   * tmux状态栏插件tmuxline.vim
-  * 状态栏插件vim-airline
   * 启动界面插件vim-startify
-  * 缩进可视化插件indentLine
-  * 代码补全插件ncm2
   * 主题插件nerodark.vim
 
 # 效果图
