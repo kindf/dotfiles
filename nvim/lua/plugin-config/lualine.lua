@@ -14,6 +14,23 @@ lualine.setup({
     },
     extensions = { "nvim-tree", "toggleterm" },
     sections = {
+        lualine_a = {
+            {
+                'filename',
+                file_status = true, -- Displays file status (readonly status, modified status)
+                newfile_status = false, -- Display new file status (new file means no write after created)
+                path = 1, -- 0: Just the filename
+                symbols = {
+                    modified = '[+]', -- Text to show when the file is modified.
+                    readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+                    unnamed = '[No Name]', -- Text to show for unnamed buffers.
+                    newfile = '[New]', -- Text to show for new created file before first writting
+                },
+            },
+        },
+        lualine_b = {
+            "mode",
+        },
         lualine_c = {
             "filename",
             {

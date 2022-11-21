@@ -34,6 +34,9 @@ packer.startup(
 
         -- 快速跳转
         use "easymotion/vim-easymotion"
+
+        -- 快速注释
+        use "tpope/vim-commentary"
     end)
 
 -- 每次保存 plugins.lua 自动安装插件

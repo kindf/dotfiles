@@ -77,6 +77,12 @@ vim.g.Lf_ShortcutF = '<C-p>'
 map("n", "sj", "<Plug>(easymotion-s2)", opt)
 map("n", "sJ", "<Plug>(easymotion-t2)", opt)
 
+-- 注释
+map("v", "/", "<Plug>Commentary", opt)
+
+-- Lua格式化
+map("n", "sf", ":lua vim.lsp.buf.formatting_sync()<CR>", opt)
+
 local pluginKeys = {}
 
 -- lsp 回调函数快捷键设置
