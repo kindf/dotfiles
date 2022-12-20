@@ -74,6 +74,7 @@ vim.g.Lf_ShortcutF = '<C-p>'
 
 -- vim-easymotion
 -- 忽略大小写
+vim.g.EasyMotion_smartcase = 1
 map("n", "sj", "<Plug>(easymotion-s2)", opt)
 map("n", "sJ", "<Plug>(easymotion-t2)", opt)
 
@@ -82,6 +83,10 @@ map("v", "/", "<Plug>Commentary", opt)
 
 -- Lua格式化
 map("n", "sf", ":lua vim.lsp.buf.formatting_sync()<CR>", opt)
+
+-- 翻译
+map("n", "st", ":Ydc<CR>", opt)
+map("n", "<C-t>", ":<C-u>Yde<CR>", opt)
 
 local pluginKeys = {}
 
