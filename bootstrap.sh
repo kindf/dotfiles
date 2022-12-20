@@ -3,9 +3,10 @@
 set -e
 set -x
 
-PROJECT_PATH=~/.dotfiles
+PROJECT_PATH=~/.config/dotfiles
 ETC=$PROJECT_PATH/etc
 BIN=$PROJECT_PATH/bin
+NVIM_CONFIG_PATH=~/.config/nvim
 
 # 克隆/更新项目
 if [ -d $PROJECT_PATH ]; then
@@ -14,6 +15,12 @@ if [ -d $PROJECT_PATH ]; then
 else
     git clone https://github.com/kindf/dotfiles.git $PROJECT_PATH
     cd $PROJECT_PATH
+fi
+
+# nvim配置
+# cp -r $PROJECT_PATH/nvim $NVIM_CONFIG_PATH
+if [ ! -d $NVIM_CONFIG_PATH ]; then
+    ln -s $PROJECT_PATH/nvim $NVIM_CONFIG_PATH
 fi
 
 # 引入init.sh
@@ -28,8 +35,7 @@ if [ ! $(command -v nvim) ]; then
     # sudo pip3 install --upgrade pynvim
 fi
 
-# nvim配置
-cp -r $PROJECT_PATH/nvim ~/.config
+# nvim插件安装
 nvim --headless +PackerSync +qall
 
 
