@@ -56,7 +56,7 @@ map("n", "<C-c><C-c", "", opt)
 map("n", "<Space>", "viw", opt)
 
 -- nvim-tree
-map("n", "<leader>t", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>t", ":NERDTreeToggle<CR>", opt)
 
 -- winbar操作
 map("n", "<C-h>", "gT<CR>", opt)
@@ -71,6 +71,8 @@ map("v", "<leader>g",
 map("n", "<leader>f", ":Leaderf rg -i -t lua -t c -t cpp -t py -t sh<CR>", opt)
 map("n", "<C-n>", ":LeaderfFunction <cr>", opt)
 vim.g.Lf_ShortcutF = '<C-p>'
+-- vim.g.Lf_WindowPosition = 'popup'
+-- vim.g.Lf_PreviewInPopup = 1
 
 -- vim-easymotion
 -- 忽略大小写

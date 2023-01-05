@@ -6,7 +6,8 @@ packer.startup(
         -- 主题插件
         use 'KeitaNakamura/neodark.vim'
         -- 目录树插件
-        use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
+        -- use({ "nvim-tree/nvim-tree.lua"})
+        use 'preservim/nerdtree'
         -- 底部信息插件
         use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
         use("arkav/lualine-lsp-progress")
@@ -43,12 +44,12 @@ packer.startup(
     end)
 
 -- 每次保存 plugins.lua 自动安装插件
-pcall(
-    vim.cmd,
-    [[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup end
-]]
-)
+-- pcall(
+--     vim.cmd,
+--     [[
+-- augroup packer_user_config
+-- autocmd!
+-- autocmd BufWritePost plugins.lua source <afile> | PackerSync
+-- augroup end
+-- ]]
+-- )

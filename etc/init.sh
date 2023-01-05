@@ -15,21 +15,21 @@ case "$-" in
 esac
 
 # 将个人 ~/.dotfiles/bin 目录加入 PATH
-_ADD_PATH=`echo -e "$PATH" | grep "$HOME/\.dotfiles/bin"` 
-if [ -d "$HOME/.dotfiles/bin" ] && [ -z $_ADD_PATH ]; then
-    export PATH="$HOME/.dotfiles/bin:$PATH"
+_ADD_PATH=`echo -e "$PATH" | grep "$HOME/\.config/dotfiles/bin"`
+if [ -d "$HOME/.config/dotfiles/bin" ] && [ -z $_ADD_PATH ]; then
+    export PATH="$HOME/.config/dotfiles/bin:$PATH"
 fi
 
 # 判断 ~/.dotfiles/etc/config.sh 存在的话，就 source 它一下
-if [ -f "$HOME/.dotfiles/etc/config.sh" ]; then
-    . "$HOME/.dotfiles/etc/config.sh"
+if [ -f "$HOME/.config/dotfiles/etc/config.sh" ]; then
+    . "$HOME/.config/dotfiles/etc/config.sh"
 fi
 
 # 如果是登陆模式，那么 source 一下 ~/.dotfiles/etc/login.sh
 if [ -n "$BASH_VERSION" ]; then
     if shopt -q login_shell; then
-        if [ -f "$HOME/.dotfiles/etc/login.sh" ] && [ -z "$_INIT_SH_NOLOG" ]; then
-            . "$HOME/.dotfiles/etc/login.sh"
+        if [ -f "$HOME/.config/dotfiles/etc/login.sh" ] && [ -z "$_INIT_SH_NOLOG" ]; then
+            . "$HOME/.config/dotfiles/etc/login.sh"
         fi
     fi
 fi
