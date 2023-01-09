@@ -6,6 +6,7 @@ local lsp_installer = require("nvim-lsp-installer")
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
 local servers = {
   sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
+  clangd = require("lsp.config.cpp"),
 }
 -- 自动安装 Language Servers
 for name, _ in pairs(servers) do
