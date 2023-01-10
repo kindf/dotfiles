@@ -41,6 +41,8 @@ packer.startup(
         use "tpope/vim-commentary"
         -- 翻译
         use "ianva/vim-youdao-translater"
+
+        use "rmagatti/auto-session"
     end)
 
 -- 每次保存 plugins.lua 自动安装插件
