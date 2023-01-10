@@ -17,7 +17,7 @@ packer.startup(
         use("williamboman/nvim-lsp-installer")
         use({ "neovim/nvim-lspconfig" })
         -- lsp增强
-        use "tami5/lspsaga.nvim"
+        use "glepnir/lspsaga.nvim"
         -- 启动界面插件
         use 'mhinz/vim-startify'
 

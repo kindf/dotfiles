@@ -66,7 +66,7 @@ map("n", "<S-l>", ":+tabmove<CR>", opt)
 
 -- leaderf
 map("v", "<leader>g",
-    ":<C-U><C-R>=printf('Leaderf! rg -F -t c -t py -t lua -t go --nowrap --stayOpen -e %s ', leaderf#Rg#visual())<CR><CR>"
+    ":<C-U><C-R>=printf('Leaderf! rg -F -t c -t py -t lua -t go -t cpp --nowrap --stayOpen -e %s ', leaderf#Rg#visual())<CR><CR>"
     , opt)
 map("n", "<leader>f", ":Leaderf rg -i -t lua -t c -t cpp -t py -t sh<CR>", opt)
 map("n", "<C-n>", ":LeaderfFunction <cr>", opt)
@@ -90,43 +90,35 @@ map("n", "sf", ":lua vim.lsp.buf.formatting_sync()<CR>", opt)
 map("n", "st", ":Ydc<CR>", opt)
 map("n", "<C-t>", ":<C-u>Yde<CR>", opt)
 
+-- cpp源/头之间切换
+map("n", "<C-o>", ":ClangdSwitchSourceHeader<CR>", opt)
+
 local pluginKeys = {}
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
     -- rename
-    -- mapbuf("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
     mapbuf("n", "<leader>r", "<cmd>Lspsaga rename<CR>", opt)
 
     -- code action:
-    -- mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
     mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
 
-    -- go xx
-    mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+    -- 跳转到定义
+    mapbuf("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opt)
+    -- 查看文档
     mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
+    -- 搜索所有引用
     mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
+    -- 打开警告的详细信息
     mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
+    -- 跳转到下个错误
     mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
+    -- 跳转到上个错误
     mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-    -- mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
-    -- mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-    -- mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-    -- mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-    -- mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
-    -- diagnostic
-    -- mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-    -- mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-    -- mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-    -- mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
-    --
-    -- 没用到
-    -- mapbuf('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opt)
-    -- mapbuf("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opt)
-    -- mapbuf('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opt)
-    -- mapbuf('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opt)
-    -- mapbuf('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opt)
-    -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
+    -- 打开终端
+    mapbuf("n", "<C-i>", "<cmd>Lspsaga open_floaterm<CR>", opt)
+    -- 关闭终端
+    vim.keymap.set("t", "<C-i>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
 end
 
 -- nvim-cmp 快捷键设置

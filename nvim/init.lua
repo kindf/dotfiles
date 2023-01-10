@@ -1,7 +1,6 @@
 require('basic')
 require('plugins')
 require('plugin-config.colorscheme')
-require('plugin-config.nvim-tree')
 require('plugin-config.lualine')
 require('lsp.setup')
 require('lsp.cmp')
