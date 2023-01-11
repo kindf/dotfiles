@@ -41,7 +41,7 @@ packer.startup(
         use "tpope/vim-commentary"
         -- 翻译
         use "ianva/vim-youdao-translater"
-
+        -- vim会话保存
         use "rmagatti/auto-session"
     end)
 

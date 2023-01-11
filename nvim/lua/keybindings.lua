@@ -77,8 +77,8 @@ vim.g.Lf_ShortcutF = '<C-p>'
 -- vim-easymotion
 -- 忽略大小写
 vim.g.EasyMotion_smartcase = 1
-map("n", "sj", "<Plug>(easymotion-s2)", opt)
-map("n", "sJ", "<Plug>(easymotion-t2)", opt)
+map("n", "J", "<Plug>(easymotion-s2)", opt)
+-- map("n", "sJ", "<Plug>(easymotion-t2)", opt)
 
 -- 注释
 map("v", "/", "<Plug>Commentary", opt)
