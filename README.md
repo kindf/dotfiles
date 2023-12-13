@@ -29,10 +29,10 @@
     * \<C-p\>：模糊搜索文件
     * \<C-n\>：文件函数搜索
     * \<C-m\>：打开最近访问文件列表
-    * 选中单词，\<leader\>g：全局搜索
+    * 选中单词，\<leader\>g：全局搜索选中单词
+    * \<leader\>f：全局搜索
   * 有道词典翻译插件 vim-youdao-translater
-    * , + ff：翻译
-    * 选中单词，\<C-t\>：翻译选中单词
+    * \<C-t\>：翻译
   * 命令行主题插件 promptline.vim
   * tmux状态栏插件 tmuxline.vim
   * 启动界面插件 vim-startify
