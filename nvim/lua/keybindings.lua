@@ -66,7 +66,7 @@ map("n", "<S-l>", ":+tabmove<CR>", opt)
 
 -- leaderf
 map("v", "<leader>g",
-    ":<C-U><C-R>=printf('Leaderf! rg -F -t c -t py -t lua -t go -t cpp --nowrap --stayOpen -e %s ', leaderf#Rg#visual())<CR><CR>"
+    ":<C-U><C-R>=printf('Leaderf! rg -F -t c -t py -t lua -t go -t cpp --nowrap -e %s ', leaderf#Rg#visual())<CR><CR>"
     , opt)
 map("n", "<leader>f", ":Leaderf rg -i -t lua -t c -t cpp -t py -t sh<CR>", opt)
 map("n", "<C-n>", ":LeaderfFunction <cr>", opt)
@@ -108,17 +108,18 @@ pluginKeys.mapLSP = function(mapbuf)
     -- 查看文档
     mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
     -- 搜索所有引用
-    mapbuf("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
+    mapbuf("n", "gr", "<cmd>Lspsaga finder<CR>", opt)
     -- 打开警告的详细信息
     mapbuf("n", "gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
     -- 跳转到下个错误
     mapbuf("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
     -- 跳转到上个错误
     mapbuf("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
-    -- 打开终端
-    mapbuf("n", "<C-i>", "<cmd>Lspsaga open_floaterm<CR>", opt)
-    -- 关闭终端
-    vim.keymap.set("t", "<C-i>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+    -- 打开预览
+    mapbuf("n", "go", "<cmd>Lspsaga outline<cr>", opt)
+    -- 打开/关闭终端
+    mapbuf("n", "<C-b>", "<cmd>Lspsaga term_toggle<CR>", opt)
+    vim.keymap.set("t", "<C-b>", [[<C-\><C-n><cmd>Lspsaga term_toggle<CR>]], { silent = true })
 end
 
 -- nvim-cmp 快捷键设置

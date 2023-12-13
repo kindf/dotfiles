@@ -1,32 +1,61 @@
-local lsp_installer = require("nvim-lsp-installer")
+require("mason").setup()
+require("mason-lspconfig").setup()
 
--- 安装列表
--- { key: 语言 value: 配置文件 }
--- key 必须为下列网址列出的名称
--- https://github.com/williamboman/nvim-lsp-installer#available-lsps
-local servers = {
-  sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
-  clangd = require("lsp.config.cpp"),
+local lua_runtime_path = vim.split(package.path, ';')
+table.insert(lua_runtime_path, 'lua/?.lua')
+table.insert(lua_runtime_path, 'lua/?/init.lua')
+-- lua_ls设置：https://luals.github.io/wiki/settings/#completionautorequire
+require("lspconfig").lua_ls.setup {
+    settings = {
+        Lua = {
+            runtime = {
+                version = "Lua 5.3",
+                path = lua_runtime_path,
+            },
+            -- 补全设置
+            completion = {
+                -- callSnippet = "Both",
+                displayContext = 5, -- 自动补全时，预览定义周围行数，0表示不启用
+                keywordSnippet = "Both",
+            },
+            -- 诊断设置
+            diagnostics = {
+                globals = { 'vim', "require", "table" },
+            },
+        }
+    },
+    on_attach = function(client, bufnr)
+        -- 禁用格式化功能，交给专门插件插件处理
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.document_range_formatting = false
+
+        local function buf_set_keymap(...)
+            vim.api.nvim_buf_set_keymap(bufnr, ...)
+        end
+
+        -- 绑定快捷键
+        require('keybindings').mapLSP(buf_set_keymap)
+        -- 保存时自动格式化
+        -- vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+    end,
 }
--- 自动安装 Language Servers
-for name, _ in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      print("Installing " .. name)
-      server:install()
-    end
-  end
-end
 
-lsp_installer.on_server_ready(function(server)
-    local config = servers[server.name]
-    if config == nil then
-        return
-    end
-    if config.on_setup then
-        config.on_setup(server)
-    else
-        server:setup({})
-    end
-end)
+require("lspconfig").clangd.setup {
+    init_options = {
+        clangdFileStatus = true
+    },
+    on_attach = function(client, bufnr)
+        -- 禁用格式化功能，交给专门插件插件处理
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.document_range_formatting = false
+
+        local function buf_set_keymap(...)
+            vim.api.nvim_buf_set_keymap(bufnr, ...)
+        end
+
+        -- 绑定快捷键
+        require('keybindings').mapLSP(buf_set_keymap)
+        -- 保存时自动格式化
+        -- vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+    end,
+}

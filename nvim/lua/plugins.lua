@@ -14,16 +14,29 @@ packer.startup(
         -- 模糊搜索插件
         use 'Yggdroot/LeaderF'
         -- lsp插件
-        use("williamboman/nvim-lsp-installer")
-        use({ "neovim/nvim-lspconfig" })
+        -- use("williamboman/nvim-lsp-installer")
+        -- use({ "neovim/nvim-lspconfig" })
+
+        use {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+        }
         -- lsp增强
-        use "glepnir/lspsaga.nvim"
+        -- use "glepnir/lspsaga.nvim"
+        use ({
+            'nvimdev/lspsaga.nvim',
+            -- after = 'nvim-lspconfig',
+            config = function()
+                require('lspsaga').setup({})
+            end,
+        })
         -- 启动界面插件
-        use 'mhinz/vim-startify'
+        -- use 'mhinz/vim-startify'
 
         -- 补全引擎
         use("hrsh7th/nvim-cmp")
-        -- snippet 引擎
+        -- -- snippet 引擎
         use("hrsh7th/vim-vsnip")
         -- 补全源
         use("hrsh7th/cmp-vsnip")
@@ -42,16 +55,20 @@ packer.startup(
         -- 翻译
         use "ianva/vim-youdao-translater"
         -- vim会话保存
-        use "rmagatti/auto-session"
+        -- use "rmagatti/auto-session"
+        use { "pysan3/autosession.nvim" }
+
+        -- 通知
+        use 'rcarriga/nvim-notify'
     end)
 
 -- 每次保存 plugins.lua 自动安装插件
--- pcall(
---     vim.cmd,
---     [[
--- augroup packer_user_config
--- autocmd!
--- autocmd BufWritePost plugins.lua source <afile> | PackerSync
--- augroup end
--- ]]
--- )
+pcall(
+    vim.cmd,
+    [[
+augroup packer_user_config
+autocmd!
+autoclualinemd BufWritePost plugins.lua source <afile> | PackerSync
+augroup end
+]]
+)

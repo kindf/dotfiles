@@ -17,7 +17,7 @@ export TERM_ITALICS=true
 
 # editor
 if command -v nvim > /dev/null 2>&1; then
-    alias vim=nvim
+    # alias vim=nvim
     export VISUAL=nvim
 else
     export VISUAL=vim
