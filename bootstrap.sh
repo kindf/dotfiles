@@ -38,7 +38,6 @@ fi
 # nvim插件安装
 nvim --headless +PackerSync +qall
 
-
 # 安装tmux
 if [ ! $(command -v tmux) ]; then
     echo -e "\033[32m start install tmux\n \033[0m"

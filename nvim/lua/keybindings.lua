@@ -103,8 +103,11 @@ pluginKeys.mapLSP = function(mapbuf)
     -- code action:
     mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
 
-    -- 跳转到定义
+    -- 显示定义
     mapbuf("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opt)
+    -- 跳转到定义
+    -- mapbuf("n", "gn", "<cmd>tab split | Lspsaga goto_definition<CR>", opt)
+    mapbuf("n", "gn", "<cmd>vsp | Lspsaga goto_definition<CR>", opt)
     -- 查看文档
     mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)
     -- 搜索所有引用
