@@ -55,8 +55,8 @@ packer.startup(
         -- 翻译
         use "ianva/vim-youdao-translater"
         -- vim会话保存
-        -- use "rmagatti/auto-session"
-        use { "pysan3/autosession.nvim" }
+        use "rmagatti/auto-session"
+        -- use { "pysan3/autosession.nvim" }
 
         -- 通知
         use 'rcarriga/nvim-notify'

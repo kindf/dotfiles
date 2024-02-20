@@ -68,9 +68,13 @@ map("n", "<S-l>", ":+tabmove<CR>", opt)
 map("v", "<leader>g",
     ":<C-U><C-R>=printf('Leaderf! rg -F -t c -t py -t lua -t go -t cpp --nowrap -e %s ', leaderf#Rg#visual())<CR><CR>"
     , opt)
-map("n", "<leader>f", ":Leaderf rg -i -t lua -t c -t cpp -t py -t sh<CR>", opt)
+map("n", "<leader>f", ":Leaderf rg -i -t lua -t c -t cpp -t py -t sh <CR>", opt)
 map("n", "<C-n>", ":LeaderfFunction <cr>", opt)
 vim.g.Lf_ShortcutF = '<C-p>'
+map("n", "//", ":LeaderfLine <cr>", opt)
+-- vim.g.Lf_WorkingDirectoryMode = 'AF'
+-- vim.g.Lf_RootMarkers = ".git, .svn, .hg, .project, .root"
+
 -- vim.g.Lf_WindowPosition = 'popup'
 -- vim.g.Lf_PreviewInPopup = 1
 
@@ -106,7 +110,7 @@ pluginKeys.mapLSP = function(mapbuf)
     -- 显示定义
     mapbuf("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opt)
     -- 跳转到定义
-    -- mapbuf("n", "gn", "<cmd>tab split | Lspsaga goto_definition<CR>", opt)
+    mapbuf("n", "gm", "<cmd>Lspsaga goto_definition<CR>", opt)
     mapbuf("n", "gn", "<cmd>vsp | Lspsaga goto_definition<CR>", opt)
     -- 查看文档
     mapbuf("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opt)

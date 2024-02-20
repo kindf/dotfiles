@@ -1,5 +1,5 @@
 -- 如果找不到组件，就不继续执行
-local status, auto_session = pcall(require, "autosession")
+local status, auto_session = pcall(require, "auto-session")
 if not status then
     return vim.notify("没有找到 auto_session")
 end
