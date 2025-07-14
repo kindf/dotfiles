@@ -16,7 +16,7 @@ esac
 
 # 将个人 ~/.dotfiles/bin 目录加入 PATH
 _ADD_PATH=`echo -e "$PATH" | grep "$HOME/\.config/dotfiles/bin"`
-if [ -d "$HOME/.config/dotfiles/bin" ] && [ -z $_ADD_PATH ]; then
+if [ -d "$HOME/.config/dotfiles/bin" ] && [ -z "$_ADD_PATH" ]; then
     export PATH="$HOME/.config/dotfiles/bin:$PATH"
 fi
 

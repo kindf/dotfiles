@@ -12,7 +12,7 @@ fi
     . /usr/share/bash-completion/bash_completion
 
 # for tmux
-export TERM=xterm-256color
+export TERM=tmux-256color
 export TERM_ITALICS=true
 
 # editor
