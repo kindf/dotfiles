@@ -78,10 +78,13 @@ local function toggle_line_numbers()
     vim.wo.relativenumber = false
     print("行号模式: 关闭")
   end
+  local current = vim.diagnostic.config().signs
+  vim.diagnostic.config({ signs = not current })
+  print('Diagnostic signs:', current and 'OFF' or 'ON')
 end
 
 -- 绑定快捷键
-vim.keymap.set('n', '<F2>', toggle_line_numbers, { noremap = true, silent = true, desc = "切换行号模式" })
+vim.keymap.set('n', '<F2>', toggle_line_numbers, { noremap = true, silent = true, desc = "切换行号/诊断显示" })
 
 -- leaderf
 map("v", "<leader>g",

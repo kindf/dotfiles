@@ -20,13 +20,16 @@ packer.startup(
             "neovim/nvim-lspconfig",
         }
 
+        -- Buf 语言服务器配置
+        use {
+            'bufbuild/buf-language-server',
+            run = 'npm install -g @bufbuild/buf-language-server', -- 可选：通过 Packer 自动安装
+        }
+
         -- lsp增强
         use({
             'nvimdev/lspsaga.nvim',
             -- after = 'nvim-lspconfig',
-            config = function()
-                require('lspsaga').setup({})
-            end,
         })
 
         -- 可选：调试虚拟文本提示
@@ -77,8 +80,10 @@ packer.startup(
         -- 主题
         use {
             'Shatur/neovim-ayu',
-            branch = 'master',
+            -- branch = 'master',
         }
+
+        use 'djoshea/vim-autoread'  -- 自动检测文件外部修改并重新加载
     end)
 
 -- 每次保存 plugins.lua 自动安装插件

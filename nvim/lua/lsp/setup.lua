@@ -1,11 +1,16 @@
 require("mason").setup()
-require("mason-lspconfig").setup()
+-- require("mason-lspconfig").setup({
+--   automatic_installation = true,
+--   automatic_setup = false, -- 禁用自动调用 setup
+-- })
 
 local lua_runtime_path = vim.split(package.path, ';')
 table.insert(lua_runtime_path, 'lua/?.lua')
 table.insert(lua_runtime_path, 'lua/?/init.lua')
 -- lua_ls设置：https://luals.github.io/wiki/settings/#completionautorequire
+
 require("lspconfig").lua_ls.setup {
+    root_dir = function() return vim.fn.getcwd() end,  -- 避免不同实例冲突
     settings = {
         Lua = {
             runtime = {
@@ -20,7 +25,11 @@ require("lspconfig").lua_ls.setup {
             },
             -- 诊断设置
             diagnostics = {
-                globals = { 'vim', "require", "table" },
+                -- globals = { 'vim', "require", "table" },
+                -- disable = { "undefined-global" },  -- 禁用未定义全局变量的警告
+                severity = {
+                    -- ["undefined-global"] = "hint", -- 改为警告（默认是 error）
+                },
             },
         }
     },
@@ -59,3 +68,39 @@ require("lspconfig").clangd.setup {
         -- vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
     end,
 }
+
+require('lspconfig').buf_ls.setup({
+    cmd = { "buf-language-server", "--stdio" },
+    filetypes = { "proto" },
+    -- root_dir = lsp.util.root_pattern("buf.yaml", "buf.work.yaml", ".git"),
+    settings = {
+        buf = {
+            -- 可选：禁用未使用的依赖警告
+            disableUnusedDependencyWarning = true,
+            fileWatcher = true                 -- 启用文件监听
+        }
+    }
+})
+
+require('lspconfig').ts_ls.setup({
+    on_attach = function(client, bufnr)
+        -- 你的按键映射等配置
+    end,
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    settings = {
+        typescript = {
+            inlayHints = {
+                includeInlayParameterNameHints = 'all',
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+            }
+        },
+        javascript = {
+            inlayHints = {
+                includeInlayParameterNameHints = 'all', 
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+            }
+        }
+    }
+})

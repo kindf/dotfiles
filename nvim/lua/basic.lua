@@ -80,6 +80,6 @@ vim.o.showtabline = 2
 vim.o.showmode = false
 -- 保留1列但隐藏符号
 vim.wo.signcolumn = "yes:1"
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "" })
 -- 指定python路径 version >= 3.7
 vim.g.python3_host_prog = "/usr/bin/python3.10"
+vim.g.node_host_prog = "~/.nvm/versions/node/v22.17.1/bin/node"

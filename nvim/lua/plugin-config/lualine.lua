@@ -32,11 +32,13 @@ lualine.setup({
             "mode",
         },
         lualine_c = {
-            "filename",
             {
-                "lsp_progress",
-                spinner_symbols = { " ", " ", " ", " ", " ", " " },
-            },
+                'diagnostics',
+                sources = { 'nvim_diagnostic' },
+                symbols = { error = 'ERROR:', warn = 'WARN:', info = 'INFO:', hint = 'HINT:' },
+                colored = true,
+                always_visible = true
+            }
         },
         lualine_x = {
             "filesize",
@@ -58,3 +60,17 @@ lualine.setup({
         },
     },
 })
+-- 或者自定义状态栏函数
+function ShowDiagnostics()
+    local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+    local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+    local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+    local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+    if errors > 0 or warnings > 0 then
+        return string.format(' %d  %d  %d  %d', errors, warnings, info, hints)
+    else
+        return '✓'
+    end
+end
+
+vim.opt.statusline = '%f %h%w%m%r ' .. '%#ErrorMsg#' .. '%{v:lua.ShowDiagnostics()}' .. '%*' .. ' %= %l,%c%V %P'

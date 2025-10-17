@@ -14,7 +14,7 @@ theme.setup({
         LineNr = { fg = '#FFD700', bold = true },    -- 行号样式
         CursorLineNr = { fg = '#FFD700', bold = true },    -- 行号样式
         -- LineNr = { fg = '#5C6773', bold = true },    -- 行号样式
-        Comment = { fg = '#5C6773', italic = true }, -- 注释斜体
+        Comment = { fg = '#5C6773', italic = false }, -- 注释斜体
 
         -- LSP 诊断样式
         DiagnosticError = { fg = '#FF3333' },
@@ -35,15 +35,26 @@ end
 -- 行号高亮设置
 vim.api.nvim_set_hl(0, "LineNr", {
   -- fg = "#FF9E64",          -- 行号文字颜色（橙色）
-  fg = "#FFD700",          -- 行号文字颜色（橙色）
+  fg = "#9E9E9E",          -- 行号文字颜色（橙色）
   bold = true,             -- 加粗
-  bg = "#161C21"
+  bg = nil
 })
 
 -- 当前行号特殊高亮
 vim.api.nvim_set_hl(0, "CursorLineNr", {
-  fg = "#FFD700",          -- 金色当前行号
+  fg = "#FFFFFF",          -- 金色当前行号
   bold = true,
   bg = "#161C21"
 })
 
+-- 非活动窗口的背景/文字颜色
+vim.api.nvim_set_hl(0, 'NormalNC', {
+  fg = '#BFBDB6',  -- 非活动窗口文字颜色
+  bg = '#232A36'   -- 非活动窗口背景色（比主背景稍浅）
+})
+
+-- 非活动窗口的分割线颜色
+vim.api.nvim_set_hl(0, 'WinSeparator', {
+  fg = '#5C6773',  -- 分割线颜色
+  bg = '#232A36'   -- 与非活动窗口背景一致
+})
