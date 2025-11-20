@@ -1,6 +1,7 @@
 local ok, theme = pcall(require, "ayu")
+local vim = vim
 if not ok then
-    vim.notify("colorstheme " .. ayu .. " 没有找到！")
+    vim.notify("theme 没有找到！")
     return
 end
 

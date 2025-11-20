@@ -32,7 +32,7 @@ echo ". $ETC/init.sh" >> ~/.bashrc
 if [ ! $(command -v nvim) ]; then
     echo -e "\033[32m start install neovim\n \033[0m"
     sudo yum -y install neovim
-    # sudo pip3 install --upgrade pynvim
+    sudo pip3 install --upgrade pynvim
 fi
 
 # nvim插件安装

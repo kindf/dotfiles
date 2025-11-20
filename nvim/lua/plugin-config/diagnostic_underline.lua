@@ -217,7 +217,7 @@ local function enhance_float_window()
             end,
             format = function(diagnostic)
                 return diagnostic.message
-            end
+            end,
         },
     })
 

@@ -47,7 +47,7 @@ map("n", "<C-u>", "9k", opt)
 map("n", "<C-d>", "9j", opt)
 
 -- 退出
-map("n", "<C-w>", ":q<CR>", opt)
+map("n", "<C-w>", "<cmd>bdelete<CR>", opt)
 map("n", "<C-s>", ":w<CR>", opt)
 map("n", "<C-q>", ":qa!<CR>", opt)
 map("n", "<C-c><C-c", "", opt)
@@ -57,8 +57,8 @@ map("n", "<Space>", "viw", opt)
 map("n", "<leader>t", ":NERDTreeToggle<CR>", opt)
 
 -- winbar操作
-map("n", "<C-h>", "gT<CR>", opt)
-map("n", "<C-l>", "gt<CR>", opt)
+map("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", opt)
+map("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", opt)
 -- map("n", "<C-h>", "<Plug>(CybuLastusedNext)", opt)
 -- map("n", "<C-l>", "<Plug>(CybuLastusedPrev)", opt)
 map("n", "<S-Tab>", "<Plug>(CybuNext)", opt)
@@ -67,20 +67,20 @@ map("n", "<S-l>", ":+tabmove<CR>", opt)
 
 -- 定义行号切换函数
 local function toggle_line_numbers()
-  local is_number = vim.wo.number
-  local is_relative = vim.wo.relativenumber
+    local is_number = vim.wo.number
+    local is_relative = vim.wo.relativenumber
 
-  if not is_number and not is_relative then
-    vim.wo.number = true
-    print("行号模式: 绝对")
-  else
-    vim.wo.number = false
-    vim.wo.relativenumber = false
-    print("行号模式: 关闭")
-  end
-  local current = vim.diagnostic.config().signs
-  vim.diagnostic.config({ signs = not current })
-  print('Diagnostic signs:', current and 'OFF' or 'ON')
+    if not is_number and not is_relative then
+        vim.wo.number = true
+        print("行号模式: 绝对")
+    else
+        vim.wo.number = false
+        vim.wo.relativenumber = false
+        print("行号模式: 关闭")
+    end
+    local current = vim.diagnostic.config().signs
+    vim.diagnostic.config({ signs = not current })
+    print('Diagnostic signs:', current and 'OFF' or 'ON')
 end
 
 -- 绑定快捷键
@@ -91,8 +91,8 @@ map("v", "<leader>g",
     ":<C-U><C-R>=printf('Leaderf! rg -F -t c -t py -t lua -t go -t cpp --nowrap -e %s ', leaderf#Rg#visual())<CR><CR>"
     , opt)
 map("n", "<leader>f", ":Leaderf rg -i -t lua -t c -t cpp -t py -t sh<CR>", opt)
-map("n", "<C-n>", ':LeaderfFunction <cr>', opt)
-map("n", "mm", ":<C-U><C-R>=printf('Leaderf mru %s', '')<CR><CR>", opt)
+map("n", "<C-m>", ':LeaderfFunction <cr>', opt)
+-- map("n", "mm", ":<C-U><C-R>=printf('Leaderf mru %s', '')<CR><CR>", opt)
 vim.g.Lf_ShortcutF = '<C-p>'
 vim.keymap.set('n', '<C-P>', ':Leaderf file<CR>', { silent = true })
 map("n", "//", ":LeaderfLine <cr>", opt)
@@ -189,48 +189,5 @@ end
 -- 上下移动选中文本
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
-
-vim.keymap.set('n', 'qq', function()
-    -- 创建浮动窗口
-    local buf = vim.api.nvim_create_buf(false, true)
-    local win = vim.api.nvim_open_win(buf, true, {
-        relative = 'editor',
-        width = 80,
-        height = 30,
-        col = (vim.o.columns - 60) / 2,
-        row = (vim.o.lines - 10) / 2,
-        style = 'minimal',
-        border = 'rounded'
-    })
-
-    -- 写入页签信息
-    local lines = {}
-    for i = 1, vim.fn.tabpagenr('$') do
-        local bufname = vim.fn.bufname(vim.fn.tabpagebuflist(i)[1])
-        table.insert(lines, string.format("%2d: %s", i, bufname))
-    end
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-
-    -- 设置键位
-    vim.keymap.set('n', '<CR>', function()
-        local line = vim.fn.line('.')
-        vim.api.nvim_win_close(win, true)
-        vim.cmd('tabnext ' .. line)
-    end, { buffer = buf })
-
-    vim.keymap.set('n', 'q', function()
-        vim.api.nvim_win_close(win, true)
-    end, { buffer = buf })
-
-    -- 添加数字键1-9映射
-    for i = 1, 9 do
-        vim.keymap.set('n', tostring(i), function()
-            if i <= vim.fn.tabpagenr('$') then
-                vim.api.nvim_win_close(win, true)
-                vim.cmd('tabnext ' .. i)
-            end
-        end, { buffer = buf })
-    end
-end)
 
 return pluginKeys

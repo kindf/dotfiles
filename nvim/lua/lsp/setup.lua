@@ -1,3 +1,4 @@
+local vim = vim
 require("mason").setup()
 -- require("mason-lspconfig").setup({
 --   automatic_installation = true,
@@ -10,7 +11,7 @@ table.insert(lua_runtime_path, 'lua/?/init.lua')
 -- lua_ls设置：https://luals.github.io/wiki/settings/#completionautorequire
 
 require("lspconfig").lua_ls.setup {
-    root_dir = function() return vim.fn.getcwd() end,  -- 避免不同实例冲突
+    root_dir = function() return vim.fn.getcwd() end, -- 避免不同实例冲突
     settings = {
         Lua = {
             runtime = {
@@ -77,7 +78,7 @@ require('lspconfig').buf_ls.setup({
         buf = {
             -- 可选：禁用未使用的依赖警告
             disableUnusedDependencyWarning = true,
-            fileWatcher = true                 -- 启用文件监听
+            fileWatcher = true -- 启用文件监听
         }
     }
 })
@@ -97,7 +98,7 @@ require('lspconfig').ts_ls.setup({
         },
         javascript = {
             inlayHints = {
-                includeInlayParameterNameHints = 'all', 
+                includeInlayParameterNameHints = 'all',
                 includeInlayFunctionParameterTypeHints = true,
                 includeInlayVariableTypeHints = true,
             }

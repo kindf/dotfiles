@@ -61,7 +61,7 @@ packer.startup(
         -- 通知
         use 'rcarriga/nvim-notify'
         -- 页签管理
-        use 'fweep/vim-tabber'
+        -- use 'fweep/vim-tabber'
 
         use {
             'akinsho/bufferline.nvim',
