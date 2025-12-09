@@ -1,3 +1,4 @@
+local vim = vim
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
@@ -9,30 +10,15 @@ vim.g.copilot_enabled = 1
 -- 取消 s 默认功能
 map("n", "s", "", opt)
 -- windows 分屏快捷键
-map("n", "sv", ":vsp<CR>", opt)
-map("n", "sh", ":sp<CR>", opt)
--- 关闭当前
-map("n", "sc", "<C-w>c", opt)
--- 关闭其他
-map("n", "so", "<C-w>o", opt)
+map("n", "<leader>v", ":vsp<CR>", opt)
+map("n", "<leader>h", ":sp<CR>", opt)
+map("n", "co", "<C-w>o", opt)
 -- Alt + hjkl  窗口之间跳转
 map("n", "<A-h>", "<C-w>h", opt)
 map("n", "<A-j>", "<C-w>j", opt)
 map("n", "<A-k>", "<C-w>k", opt)
 map("n", "<A-l>", "<C-w>l", opt)
-
--- 左右比例控制
--- map("n", "<C-Left>", ":vertical resize -2<CR>", opt)
--- map("n", "<C-Right>", ":vertical resize +2<CR>", opt)
--- map("n", "s,", ":vertical resize -20<CR>", opt)
--- map("n", "s.", ":vertical resize +20<CR>", opt)
--- -- 上下比例
--- map("n", "sj", ":resize +10<CR>", opt)
--- map("n", "sk", ":resize -10<CR>", opt)
--- map("n", "<C-Down>", ":resize +2<CR>", opt)
--- map("n", "<C-Up>", ":resize -2<CR>", opt)
--- -- 等比例
--- map("n", "s=", "<C-w>=", opt)
+map("n", "<C-a>", "ggVG", opt)
 
 map("n", "vv", "V", opt)
 -- visual模式下缩进代码
@@ -56,11 +42,8 @@ map("n", "<Space>", "viw", opt)
 -- nvim-tree
 map("n", "<leader>t", ":NERDTreeToggle<CR>", opt)
 
--- winbar操作
 map("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", opt)
--- map("n", "<C-h>", "<Plug>(CybuLastusedNext)", opt)
--- map("n", "<C-l>", "<Plug>(CybuLastusedPrev)", opt)
 map("n", "<S-Tab>", "<Plug>(CybuNext)", opt)
 map("n", "<S-h>", ":-tabmove<CR>", opt)
 map("n", "<S-l>", ":+tabmove<CR>", opt)
@@ -86,45 +69,10 @@ end
 -- 绑定快捷键
 vim.keymap.set('n', '<F2>', toggle_line_numbers, { noremap = true, silent = true, desc = "切换行号/诊断显示" })
 
--- leaderf
-map("v", "<leader>g",
-    ":<C-U><C-R>=printf('Leaderf! rg -F -t c -t py -t lua -t go -t cpp --nowrap -e %s ', leaderf#Rg#visual())<CR><CR>"
-    , opt)
-map("n", "<leader>f", ":Leaderf rg -i -t lua -t c -t cpp -t py -t sh<CR>", opt)
-map("n", "<C-m>", ':LeaderfFunction <cr>', opt)
--- map("n", "mm", ":<C-U><C-R>=printf('Leaderf mru %s', '')<CR><CR>", opt)
-vim.g.Lf_ShortcutF = '<C-p>'
-vim.keymap.set('n', '<C-P>', ':Leaderf file<CR>', { silent = true })
-map("n", "//", ":LeaderfLine <cr>", opt)
--- vim.g.Lf_WorkingDirectoryMode = 'AF'
--- vim.g.Lf_RootMarkers = ".git, .svn, .hg, .project, .root"
-
--- vim.g.Lf_WindowPosition = 'popup'
--- vim.g.Lf_PreviewInPopup = 1
-
--- vim-easymotion
--- 忽略大小写
-vim.g.EasyMotion_smartcase = 1
-map("n", ";;", "<Plug>(easymotion-s2)", opt)
--- map("n", "sJ", "<Plug>(easymotion-t2)", opt)
-
--- 注释
-map("v", "/", "<Plug>Commentary", opt)
-
--- Lua格式化
-map("n", "sf", ":lua vim.lsp.buf.format()<CR>", opt)
-
 -- 翻译
-map("n", "st", ":Ydc<CR>", opt)
+-- map("n", "st", ":Ydc<CR>", opt)
 map("n", "<C-t>", ":<C-u>Yde<CR>", opt)
 
--- cpp源/头之间切换
-map("n", "<C-o>", ":ClangdSwitchSourceHeader<CR>", opt)
-
--- vim-tab
--- 切换最近打开的页签
--- map("n", "<S-Tab>", ":TabberSelectLastActive<CR>", opt)
--- map("n", "<S-Tab>", ":echo 'Shift+Tab worked!<CR>'", opt)
 map("n", "<C-Tab>", ":echo 'Ctrl+Tab worked!'<CR>", opt)
 local pluginKeys = {}
 
@@ -151,6 +99,9 @@ map("n", "fj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opt)
 map("n", "fk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opt)
 -- 打开预览
 map("n", "fo", "<cmd>Lspsaga outline<cr>", opt)
+-- 格式化
+map("n", "ff", "<cmd>lua vim.lsp.buf.format()<CR>", opt)
+
 pluginKeys.mapLSP = function(mapbuf)
     --     -- rename
     --     -- 打开/关闭终端
@@ -158,7 +109,7 @@ pluginKeys.mapLSP = function(mapbuf)
     --     -- vim.keymap.set("t", "<C-b>", [[<C-\><C-n><cmd>Lspsaga term_toggle<CR>]], { silent = true })
 end
 
-vim.keymap.set('n', 'gm', function()
+vim.keymap.set('n', 'fm', function()
     vim.cmd('tab split')     -- 新建标签页
     vim.lsp.buf.definition() -- 跳转到定义
 end, { desc = 'Goto Definition in New Tab' })

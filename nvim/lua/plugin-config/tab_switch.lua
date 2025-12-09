@@ -252,7 +252,7 @@ local function setup_ctrl_n_switcher()
 
                 -- 限制列表长度，只保留最近使用的
                 if #recent_buffers > 10 then
-                    recent_buffers = { table.unpack(recent_buffers, 1, 10) }
+                    recent_buffers = { unpack(recent_buffers, 1, 10) }
                 end
 
                 -- 更新当前索引

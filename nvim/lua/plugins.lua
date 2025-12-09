@@ -10,8 +10,6 @@ packer.startup(
         -- 底部信息插件
         use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
         use("arkav/lualine-lsp-progress")
-        -- 模糊搜索插件
-        use 'Yggdroot/LeaderF'
 
         -- lua language server
         use {
@@ -49,9 +47,12 @@ packer.startup(
         use("rafamadriz/friendly-snippets")
 
         -- 快速跳转
-        use "easymotion/vim-easymotion"
+        -- use "easymotion/vim-easymotion"
+        use "folke/flash.nvim"
+
         -- 快速注释
-        use "tpope/vim-commentary"
+        use "numToStr/Comment.nvim"
+
         -- 翻译
         use "ianva/vim-youdao-translater"
         -- vim会话保存
@@ -60,22 +61,15 @@ packer.startup(
 
         -- 通知
         use 'rcarriga/nvim-notify'
-        -- 页签管理
-        -- use 'fweep/vim-tabber'
 
         use {
             'akinsho/bufferline.nvim',
             requires = 'nvim-tree/nvim-web-devicons',
         }
 
-        use {
-            'ghillb/cybu.nvim',
-            commit = "a97f40",
-            requires = { 'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim' },
-        }
-
         -- treesitter
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+        --
 
         -- 主题
         use {
@@ -84,9 +78,22 @@ packer.startup(
         }
 
         use 'djoshea/vim-autoread'  -- 自动检测文件外部修改并重新加载
-    end)
 
--- 每次保存 plugins.lua 自动安装插件
+         -- Telescope 核心插件
+         use {
+             'nvim-telescope/telescope.nvim',
+             tag = '0.1.6',  -- 指定稳定版本，或使用 'latest'
+             requires = {
+                 {'nvim-lua/plenary.nvim'},
+                 -- 可选但推荐的扩展
+                 {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+                 {'nvim-telescope/telescope-ui-select.nvim'},
+                 {'MunifTanjim/nui.nvim'},
+             }
+         }
+     end)
+
+     -- 每次保存 plugins.lua 自动安装插件
 pcall(
     vim.cmd,
     [[

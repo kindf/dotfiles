@@ -26,7 +26,7 @@ theme.setup({
     },
 })
 
-local colorscheme = "ayu"
+local colorscheme = "ayu-mirage"
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
     vim.notify("colorstheme " .. colorscheme .. " 没有找到！")

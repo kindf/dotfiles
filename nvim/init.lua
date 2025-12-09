@@ -1,13 +1,17 @@
 require('basic')
+require('keybindings')
 require('plugins')
 require('plugin-config.colorscheme')
 require('plugin-config.lualine')
 require('plugin-config.autosession')
 require('plugin-config.bufferline')
 require('plugin-config.lspsaga')
+require('plugin-config.telescope')
 require('lsp.setup')
 require('lsp.cmp')
-require('keybindings')
+require('plugin-config.flash')
+require('plugin-config.comment')
 -- 快捷键实现
 require('plugin-config.diagnostic_underline')
 require('plugin-config.tab_switch')
+
