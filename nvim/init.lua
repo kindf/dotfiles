@@ -11,6 +11,7 @@ require('lsp.setup')
 require('lsp.cmp')
 require('plugin-config.flash')
 require('plugin-config.comment')
+require('plugin-config.spectre')
 -- 快捷键实现
 require('plugin-config.diagnostic_underline')
 require('plugin-config.tab_switch')

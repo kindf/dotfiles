@@ -50,6 +50,8 @@ packer.startup(
         -- use "easymotion/vim-easymotion"
         use "folke/flash.nvim"
 
+        -- 替换
+        use "nvim-pack/nvim-spectre"
         -- 快速注释
         use "numToStr/Comment.nvim"
 

@@ -5,19 +5,21 @@ if not status then
 end
 flash.setup({
     label = {
-        min_pattern_length = 2,
+        min_pattern_length = 1,
         uppercase = true,
     },
     -- 自定义键位
     modes = {
         char = {
             jump_labels = true,
+            -- enabled = false, -- 禁用 char 模式
             char_actions = function(motion)
                 return {
                     [";"] = "next", -- 重复上一次跳转
                     [","] = "prev", -- 反向重复
                 }
             end,
+            keys = {},
         },
         -- 树状标签模式
         treesitter = {
@@ -74,3 +76,9 @@ vim.keymap.set({ "n", "x", "o" }, "s", function()
         },
     })
 end, { desc = "Flash" })
+
+vim.keymap.set({ "n", "x", "o" }, "S", function()
+    require("flash").treesitter({
+    })
+end, { desc = "flash treesitter" })
+
