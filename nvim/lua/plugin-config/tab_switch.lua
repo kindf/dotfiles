@@ -14,7 +14,7 @@ local function setup_ctrl_n_switcher()
             return vim.api.nvim_buf_is_valid(buf) and
                 vim.api.nvim_buf_get_option(buf, 'buflisted') and
                 vim.api.nvim_buf_is_loaded(buf) and
-                vim.bo[buf].buftype == ""    -- 只包括普通文件缓冲区
+                vim.bo[buf].buftype == "" -- 只包括普通文件缓冲区
         end, vim.api.nvim_list_bufs())
 
         -- 如果当前缓冲区不在列表中，添加到开头
@@ -141,21 +141,21 @@ local function setup_ctrl_n_switcher()
                 -- 添加序号和文件名
                 local line_content = string.format("%s%2d. %s", indicator, i, display_name)
                 table.insert(lines, line_content)
-                  -- 为选中的条目设置高亮
+                -- 为选中的条目设置高亮
                 if i == current_index then
                     -- 整个行背景高亮
-                    table.insert(highlights, {"Visual", line_num, 0, -1})
+                    table.insert(highlights, { "Visual", line_num, 0, -1 })
                     -- 指示器高亮
-                    table.insert(highlights, {"Special", line_num, 0, 2})
+                    table.insert(highlights, { "Special", line_num, 0, 2 })
                     -- 序号高亮
-                    table.insert(highlights, {"Number", line_num, 2, 5})
+                    table.insert(highlights, { "Number", line_num, 2, 5 })
                     -- 文件名高亮
-                    table.insert(highlights, {"Bold", line_num, 5, -1})
+                    table.insert(highlights, { "Bold", line_num, 5, -1 })
                 else
                     -- 非选中条目的指示器
-                    table.insert(highlights, {"Comment", line_num, 0, 2})
+                    table.insert(highlights, { "Comment", line_num, 0, 2 })
                     -- 非选中条目的序号
-                    table.insert(highlights, {"LineNr", line_num, 2, 5})
+                    table.insert(highlights, { "LineNr", line_num, 2, 5 })
                 end
             end
 
@@ -171,7 +171,7 @@ local function setup_ctrl_n_switcher()
                 -- 高亮当前选中的行
                 local line_offset = 2 -- 前两行是标题
                 for _, hl in ipairs(highlights) do
-                        vim.api.nvim_buf_add_highlight(float_buf, -1, hl[1], hl[2], hl[3], hl[4])
+                    vim.api.nvim_buf_add_highlight(float_buf, -1, hl[1], hl[2], hl[3], hl[4])
                 end
             end)
         end

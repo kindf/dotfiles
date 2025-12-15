@@ -1,8 +1,7 @@
 local ok, theme = pcall(require, "ayu")
 local vim = vim
 if not ok then
-    vim.notify("theme 没有找到！")
-    return
+    return vim.notify("theme 没有找到！")
 end
 
 theme.setup({

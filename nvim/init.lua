@@ -1,18 +1,28 @@
 require('basic')
 require('keybindings')
 require('plugins')
-require('plugin-config.colorscheme')
-require('plugin-config.lualine')
-require('plugin-config.autosession')
-require('plugin-config.bufferline')
+-- lsp 相关
 require('plugin-config.lspsaga')
-require('plugin-config.telescope')
 require('lsp.setup')
 require('lsp.cmp')
+-- 主题
+require('plugin-config.colorscheme')
+-- 状态栏显示
+require('plugin-config.lualine')
+-- 会话保存
+require('plugin-config.autosession')
+-- 页签管理
+require('plugin-config.bufferline')
+-- 模糊搜索
+require('plugin-config.telescope')
+-- 快速跳转
 require('plugin-config.flash')
+-- 快速备注
 require('plugin-config.comment')
+-- 快速替换
 require('plugin-config.spectre')
+-- 浮动终端管理器
+require('plugin-config.fterm')
 -- 快捷键实现
 require('plugin-config.diagnostic_underline')
 require('plugin-config.tab_switch')
-

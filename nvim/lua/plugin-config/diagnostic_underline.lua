@@ -1,5 +1,5 @@
+local vim = vim
 local M = {}
-
 -- 测试终端是否支持 undercurl (运行指令 ": TestUndercurl")
 vim.api.nvim_create_user_command('TestUndercurl', function()
     local buf = vim.api.nvim_create_buf(false, true)

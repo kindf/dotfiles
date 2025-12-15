@@ -1,8 +1,10 @@
--- ~/.config/nvim/lua/config/telescope.lua
-local telescope = require('telescope')
-local actions = require('telescope.actions')
 local vim = vim
+local status, telescope = pcall(require, "telescope")
+if not status then
+    return vim.notify("没有找到 telescope")
+end
 
+local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>f', builtin.live_grep, { desc = 'Telescope live grep' })

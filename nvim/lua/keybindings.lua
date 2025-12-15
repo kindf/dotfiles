@@ -71,9 +71,8 @@ vim.keymap.set('n', '<F2>', toggle_line_numbers, { noremap = true, silent = true
 
 -- 翻译
 -- map("n", "st", ":Ydc<CR>", opt)
-map("n", "<C-t>", ":<C-u>Yde<CR>", opt)
+map("n", "<A-y>", ":<C-u>Yde<CR>", opt)
 
-map("n", "<C-Tab>", ":echo 'Ctrl+Tab worked!'<CR>", opt)
 local pluginKeys = {}
 
 -- lsp 回调函数快捷键设置

@@ -57,9 +57,13 @@ packer.startup(
 
         -- 翻译
         use "ianva/vim-youdao-translater"
+
         -- vim会话保存
         use "rmagatti/auto-session"
         -- use { "pysan3/autosession.nvim" }
+
+        -- 终端管理器
+        use "numToStr/FTerm.nvim"
 
         -- 通知
         use 'rcarriga/nvim-notify'
@@ -71,7 +75,6 @@ packer.startup(
 
         -- treesitter
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-        --
 
         -- 主题
         use {
@@ -79,23 +82,23 @@ packer.startup(
             -- branch = 'master',
         }
 
-        use 'djoshea/vim-autoread'  -- 自动检测文件外部修改并重新加载
+        use 'djoshea/vim-autoread' -- 自动检测文件外部修改并重新加载
 
-         -- Telescope 核心插件
-         use {
-             'nvim-telescope/telescope.nvim',
-             tag = '0.1.6',  -- 指定稳定版本，或使用 'latest'
-             requires = {
-                 {'nvim-lua/plenary.nvim'},
-                 -- 可选但推荐的扩展
-                 {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
-                 {'nvim-telescope/telescope-ui-select.nvim'},
-                 {'MunifTanjim/nui.nvim'},
-             }
-         }
-     end)
+        -- Telescope 核心插件
+        use {
+            'nvim-telescope/telescope.nvim',
+            tag = '0.1.6',  -- 指定稳定版本，或使用 'latest'
+            requires = {
+                { 'nvim-lua/plenary.nvim' },
+                -- 可选但推荐的扩展
+                { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+                { 'nvim-telescope/telescope-ui-select.nvim' },
+                { 'MunifTanjim/nui.nvim' },
+            }
+        }
+    end)
 
-     -- 每次保存 plugins.lua 自动安装插件
+-- 每次保存 plugins.lua 自动安装插件
 pcall(
     vim.cmd,
     [[
