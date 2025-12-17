@@ -1,3 +1,4 @@
+local vim = vim
 local packer = require("packer")
 packer.startup(
     function(use)
@@ -18,20 +19,9 @@ packer.startup(
             "neovim/nvim-lspconfig",
         }
 
-        -- Buf 语言服务器配置
-        use {
-            'bufbuild/buf-language-server',
-            run = 'npm install -g @bufbuild/buf-language-server', -- 可选：通过 Packer 自动安装
-        }
-
         -- lsp增强
-        use({
-            'nvimdev/lspsaga.nvim',
-            -- after = 'nvim-lspconfig',
-        })
+        use 'nvimdev/lspsaga.nvim'
 
-        -- 可选：调试虚拟文本提示
-        use 'theHamsta/nvim-dap-virtual-text'
         -- 补全引擎
         use("hrsh7th/nvim-cmp")
         -- -- snippet 引擎
@@ -52,6 +42,7 @@ packer.startup(
 
         -- 替换
         use "nvim-pack/nvim-spectre"
+
         -- 快速注释
         use "numToStr/Comment.nvim"
 
@@ -60,7 +51,6 @@ packer.startup(
 
         -- vim会话保存
         use "rmagatti/auto-session"
-        -- use { "pysan3/autosession.nvim" }
 
         -- 终端管理器
         use "numToStr/FTerm.nvim"
@@ -77,17 +67,14 @@ packer.startup(
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
         -- 主题
-        use {
-            'Shatur/neovim-ayu',
-            -- branch = 'master',
-        }
+        use 'Shatur/neovim-ayu'
 
         use 'djoshea/vim-autoread' -- 自动检测文件外部修改并重新加载
 
         -- Telescope 核心插件
         use {
             'nvim-telescope/telescope.nvim',
-            tag = '0.1.6',  -- 指定稳定版本，或使用 'latest'
+            tag = '0.1.6', -- 指定稳定版本，或使用 'latest'
             requires = {
                 { 'nvim-lua/plenary.nvim' },
                 -- 可选但推荐的扩展
@@ -96,15 +83,8 @@ packer.startup(
                 { 'MunifTanjim/nui.nvim' },
             }
         }
-    end)
 
--- 每次保存 plugins.lua 自动安装插件
-pcall(
-    vim.cmd,
-    [[
-augroup packer_user_config
-autocmd!
-autoclualinemd BufWritePost plugins.lua source <afile> | PackerSync
-augroup end
-]]
-)
+        -- ai 补全
+        use 'Exafunction/windsurf.vim'
+
+    end)

@@ -1,10 +1,5 @@
 local vim = vim
 require("mason").setup()
--- require("mason-lspconfig").setup({
---   automatic_installation = true,
---   automatic_setup = false, -- 禁用自动调用 setup
--- })
-
 local lua_runtime_path = vim.split(package.path, ';')
 table.insert(lua_runtime_path, 'lua/?.lua')
 table.insert(lua_runtime_path, 'lua/?/init.lua')

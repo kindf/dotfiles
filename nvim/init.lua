@@ -26,3 +26,4 @@ require('plugin-config.fterm')
 -- 快捷键实现
 require('plugin-config.diagnostic_underline')
 require('plugin-config.tab_switch')
+

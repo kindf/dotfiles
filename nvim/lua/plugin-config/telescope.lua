@@ -32,7 +32,7 @@ vim.keymap.set('n', '<C-m>', function()
         show_line = true,
         bufnr = vim.api.nvim_get_current_buf(),
         remaining = true,
-        -- symbols = {"function", "method"}
+        symbols = {"function", "method"}
     })
 end, { desc = "Treesitter 符号查找" })
 

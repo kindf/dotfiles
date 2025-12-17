@@ -1,8 +1,7 @@
--- 如果找不到lualine 组件，就不继续执行
+local vim = vim
 local status, cmp = pcall(require, "cmp")
 if not status then
-    vim.notify("没有找到 cmp")
-    return
+    return vim.notify("没有找到 cmp")
 end
 
 cmp.setup({
@@ -27,6 +26,8 @@ cmp.setup({
         { name = "nvim_lsp" },
         -- For vsnip users.
         { name = "vsnip" },
+
+        { name = "minuet" },
 
         -- For luasnip users.
         -- { name = 'luasnip' },
