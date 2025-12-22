@@ -23,7 +23,11 @@ require('plugin-config.comment')
 require('plugin-config.spectre')
 -- 浮动终端管理器
 require('plugin-config.fterm')
+-- 诊断信息
+require('plugin-config.tiny-inline-diagnostic')
+-- 分割线
+require('plugin-config.indent-blankline')
+-- 系统剪贴板
+require('plugin-config.vim-oscyank')
 -- 快捷键实现
-require('plugin-config.diagnostic_underline')
 require('plugin-config.tab_switch')
-

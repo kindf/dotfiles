@@ -28,6 +28,7 @@ cmp.setup({
         { name = "vsnip" },
 
         { name = "minuet" },
+        { name = "codeium" },
 
         -- For luasnip users.
         -- { name = 'luasnip' },

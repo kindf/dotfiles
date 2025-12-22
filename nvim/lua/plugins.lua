@@ -87,4 +87,14 @@ packer.startup(
         -- ai 补全
         use 'Exafunction/windsurf.vim'
 
+        -- 分割线
+        use 'lukas-reineke/indent-blankline.nvim'
+
+        -- use 'folke/trouble.nvim'
+
+        -- 剪切板
+        use 'ojroques/vim-oscyank'
+
+        -- lsp虚拟提示
+        use 'rachartier/tiny-inline-diagnostic.nvim'
     end)
