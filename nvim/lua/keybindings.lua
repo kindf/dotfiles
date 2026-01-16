@@ -44,7 +44,6 @@ map("n", "<leader>t", ":NERDTreeToggle<CR>", opt)
 
 map("n", "<C-h>", "<cmd>BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", opt)
-map("n", "<S-Tab>", "<Plug>(CybuNext)", opt)
 map("n", "<S-h>", ":-tabmove<CR>", opt)
 map("n", "<S-l>", ":+tabmove<CR>", opt)
 

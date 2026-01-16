@@ -30,11 +30,10 @@ end)
 ibl.setup {
     indent = {
         char = "|",
-        tab_char = "*",
-        -- highlight = highlight,
     },
     scope = {
-        enabled = false,
+        enabled = true,
+        highlight = highlight,
     },
     whitespace = {
         -- highlight = { "Function", "Label" },
