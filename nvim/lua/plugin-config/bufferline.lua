@@ -25,7 +25,7 @@ bufferline.setup({
         left_trunc_marker = '', -- 左侧截断标记
         right_trunc_marker = '', -- 右侧截断标记
         -- 排序策略
-        sort_by = 'insert_after_current', -- 排序方式 (id | extension | directory | relative_directory | modified)
+        sort_by = 'id', -- 排序方式 (id | extension | directory | relative_directory | modified)
         separator_style = "slant", -- 分隔符样式 (slant | padded_slant | thin | thick)
         -- enforce_regular_tabs = true,      -- 强制等宽tab
         always_show_bufferline = true, -- 总是显示bufferline

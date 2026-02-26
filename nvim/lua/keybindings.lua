@@ -149,4 +149,9 @@ vim.keymap.set('i', '<A-m>', function() return vim.fn['codeium#CycleCompletions'
 vim.keymap.set('i', '<A-x>', function() return vim.fn['codeium#Clear']() end,
     { expr = true, silent = true })
 
+-- 设置 Ctrl + 数字键 直接跳转到对应位置的缓冲区
+for i = 1, 9 do
+    vim.keymap.set("n", "<leader>" .. i, ":BufferLineGoToBuffer " .. i .. "<CR>", { noremap = true, silent = true })
+end
+
 return pluginKeys
